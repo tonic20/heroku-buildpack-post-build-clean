@@ -14,16 +14,18 @@ fi
 
 cd ${BUILD_DIR}
 
-echo "ls:"
-ls -la
-
-echo "du:"
-du -h -d 1
+function show_build_files {
+  ls -la
+  du -h -d 1
+}
 
 if [[ ! -f "${CLEAN_FILES}" ]]; then
   echo "Could not find .slug-post-clean file - exiting"
   exit 1
 fi
+
+echo "Before clean:"
+show_build_files
 
 echo "CLEAN FILES EXISTS"
 
@@ -54,3 +56,8 @@ while read file; do
     echo "Location ${file} not found - ignoring"
   fi
 done <${CLEAN_FILES}
+
+echo "After clean:"
+show_build_files
+
+exit 0
