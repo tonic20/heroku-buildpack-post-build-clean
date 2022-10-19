@@ -17,6 +17,7 @@ cd ${BUILD_DIR}
 function show_build_files {
   ls -la
   du -h -d 1
+  du -h public
 }
 
 if [[ ! -f "${CLEAN_FILES}" ]]; then
